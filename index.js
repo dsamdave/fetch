@@ -128,7 +128,90 @@ const fetchData = ()=>{
     })
 }
 
-fetchData()
+// fetchData()
+
+const wallets = [
+    {
+        id: 1,
+        userId: 1,
+        balance: 100
+    },
+    {
+        id: 2,
+        userId: 2,
+        balance: 150
+    },
+    {
+        id: 3,
+        userId: 3,
+        balance: 250
+    }
+]
 
 
+const users = [
+    {
+        id: 1,
+        name: "David",
+        gender: "male"
+    },
+    {
+        id: 2,
+        name: "Great",
+        gender: "female"
+    },
+    {
+        id: 3,
+        name: "Junior",
+        gender: "male"
+    }
+]
+
+
+const updateWalletBalance = (amount, userId)=>{
+
+    if(!userId){
+        return console.log("Please add user ID!")
+    }
+
+    const userWallet = wallets.filter((each, idx)=>{
+        return each.userId === userId
+    })
+
+    if(userWallet.length < 1){
+        return console.log("User wallet not found!")
+    }
+
+    userWallet[0].balance += amount
+
+    console.log(userWallet, amount)
+
+}
+
+
+const findUser = ( amount, userId )=>{
+
+    if(!userId){
+        return console.log("Please add user ID!")
+    }
+
+    const user = users.filter((each)=>{
+        return each.id == userId
+    })
+
+    if(user.length < 1){
+        return console.log("User account not found!")
+    }
+
+    console.log(user)
+
+    // Find wallet 
+    // Update wallet balance
+
+    updateWalletBalance(amount, userId)
+
+}
+
+
+findUser(200, 1 )
 
